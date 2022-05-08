@@ -110,12 +110,7 @@ def detect(opt, save_img=False):
                     n = (det[:, -1] == c).sum()  # detections per class
                     # add to string
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "
-                if n == 0:
-                    b = 1
-                else: 
-                    b = n
-                #LOGGER.info(f'{s} Estimated Band Members: {b}')
-                st.button('Estimated Band Members:',n)
+
                 
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
@@ -133,6 +128,12 @@ def detect(opt, save_img=False):
                         plot_one_box(xyxy, im0, label=label,
                                      color=colors[int(cls)], line_thickness=3)
 
+            if n == 0:
+                b = 1
+            else: 
+                b = n
+            #LOGGER.info(f'{s} Estimated Band Members: {b}')
+            st.button('Estimated Band Members:',n)
             # Print time (inference + NMS)
             print(f'{s}Done. ({t2 - t1:.3f}s)')
 
