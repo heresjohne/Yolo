@@ -133,7 +133,8 @@ def detect(opt, save_img=False):
             else: 
                 b = n
             #LOGGER.info(f'{s} Estimated Band Members: {b}')
-            st.button('Estimated Band Members:',n)
+            st.button(f'{b}')
+            
             # Print time (inference + NMS)
             print(f'{s}Done. ({t2 - t1:.3f}s)')
 
