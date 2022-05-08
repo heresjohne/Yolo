@@ -156,12 +156,20 @@ def detect(opt, save_img=False):
                             # 参考 https://xugaoxiang.com/2021/08/20/opencv-h264-videowrite
                             save_path, cv2.VideoWriter_fourcc(*'avc1'), fps, (w, h))
                     vid_writer.write(im0)
+                    
+            if n == 0:
+                b = 1
+            else: 
+                b = n
+            LOGGER.info(f'{s} Estimated Band Members: {b}')
 
     if save_txt or save_img:
         s = f"\n{len(list(save_dir.glob('labels/*.txt')))} labels saved to {save_dir / 'labels'}" if save_txt else ''
         print(f"Results saved to {save_dir}{s}")
 
     print(f'Done. ({time.time() - t0:.3f}s)')
+    
+
 
 
 if __name__ == '__main__':
