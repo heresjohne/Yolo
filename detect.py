@@ -6,7 +6,7 @@ import cv2
 import torch
 import torch.backends.cudnn as cudnn
 from numpy import random
-
+import streamlit as st
 from models.experimental import attempt_load
 from utils.datasets import LoadStreams, LoadImages
 from utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, apply_classifier, \
@@ -114,8 +114,9 @@ def detect(opt, save_img=False):
                     b = 1
                 else: 
                     b = n
-                LOGGER.info(f'{s} Estimated Band Members: {b}')
-
+                #LOGGER.info(f'{s} Estimated Band Members: {b}')
+                st.button('Estimated Band Members:',b)
+                
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
                     if save_txt:  # Write to file
