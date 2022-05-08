@@ -110,6 +110,11 @@ def detect(opt, save_img=False):
                     n = (det[:, -1] == c).sum()  # detections per class
                     # add to string
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "
+                if n == 0:
+                    b = 1
+                else: 
+                    b = n
+                LOGGER.info(f'{s} Estimated Band Members: {b}')
 
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
@@ -155,11 +160,7 @@ def detect(opt, save_img=False):
                             save_path, cv2.VideoWriter_fourcc(*'avc1'), fps, (w, h))
                     vid_writer.write(im0)
                     
-        if n == 0:
-            b = 1
-        else: 
-            b = n
-        LOGGER.info(f'{s} Estimated Band Members: {b}')
+
 
     if save_txt or save_img:
         s = f"\n{len(list(save_dir.glob('labels/*.txt')))} labels saved to {save_dir / 'labels'}" if save_txt else ''
