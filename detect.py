@@ -116,7 +116,7 @@ def detect(opt, save_img=False):
                     b = n
                 #LOGGER.info(f'{s} Estimated Band Members: {b}')
                 print(b,n)
-                st.button('Estimated Band Members:',b)
+                st.button('Estimated Band Members:',b,n)
                 
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
