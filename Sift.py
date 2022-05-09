@@ -112,22 +112,21 @@ def file_selector(opt,folder_path='./images/'):
             filename3 = str(filename2).rstrip('.jpg')
             print('Album name is:',filename_list[counter])
             found = 1
-            #st.header(f'Album name is: {filename3}')
+            st.header(f'Album name is: {filename3}')
+            break
         else: 
+            
             print('aaa')
-            return
+            found = 0
             
 #              st.button('None')
 
         counter += 1
         
         
-        if found == 1:
-            st.header(f'Album name is: {filename3}')
-
-        else:
+        if found == 0:
             st.header('Oops, we do not have that album')
-        
+
         
 #     selected_filename = st.selectbox('Select a file', filenames)
 #     return os.path.join(folder_path, selected_filename)
