@@ -1,5 +1,5 @@
 # pip install -r requirements.txt
-
+spotipy
 streamlit
 numpy
 opencv-python-headless
