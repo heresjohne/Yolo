@@ -63,7 +63,7 @@ with torch.no_grad():
 
           lbl = class_names[lbl]
 
-          print('Predicted Decade is:', pred, 'of', images)
+          print('Predicted Decade is:', pred)
           print('Actual Decade is',lbl)
           count +=1 
         total += labels.size(0)
