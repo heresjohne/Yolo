@@ -83,8 +83,8 @@ def file_selector(folder_path='./images/'):
         keypoints_1, descriptors_1 = sift.detectAndCompute(img1,None)
         sift_list.append(descriptors_1)
         keyp_list.append(keypoints_1)
-    selected_filename = st.selectbox('Select a file', filenames)
-    return os.path.join(folder_path, selected_filename)
+#     selected_filename = st.selectbox('Select a file', filenames)
+#     return os.path.join(folder_path, selected_filename)
 
-filename = file_selector()
-st.write('You selected `%s`' % filename)
+# filename = file_selector()
+# st.write('You selected `%s`' % filename)
