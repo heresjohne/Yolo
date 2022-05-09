@@ -5,9 +5,10 @@ from torchvision import datasets, models, transforms
 import torch.utils.data as data
 import multiprocessing
 from sklearn.metrics import confusion_matrix
+import streamlit as st
 #Loading the testing images
 #Loading the saved model
-EVAL_MODEL= '/content/drive/MyDrive/Training/model.pth'
+EVAL_MODEL= './model/model.pth'
 model = torch.load(EVAL_MODEL,map_location ='cpu')
 
 model.eval()
@@ -16,7 +17,7 @@ model.eval()
 
 
 bs = 8
-EVAL_DIR='/content/drive/MyDrive/Training/test'
+EVAL_DIR='./test/'
 
 
 # Prepare the eval data loader
@@ -44,7 +45,7 @@ lbllist=torch.zeros(0,dtype=torch.long, device='cpu')
 # Evaluate the model accuracy on the dataset
 correct = 0
 total = 0
-print(num_classes)
+st.text(f'{num_classes}')
 with torch.no_grad():
     for images, labels in eval_loader:
         images, labels = images.to(device), labels.to(device)
