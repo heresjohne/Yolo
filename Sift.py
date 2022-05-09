@@ -78,9 +78,9 @@ def file_selector(folder_path='./images/'):
         image_list.append(img1)
         img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
 
-        sift = cv2.xfeatures2d.SIFT_create()
+        sift = cv2.SIFT_create()
 
-        keypoints_1, descriptors_1 = sift.detectAndCompute(img1,None)
+        keypoints_1, descriptors_1 = sift.detect(img1,None)
         sift_list.append(descriptors_1)
         keyp_list.append(keypoints_1)
 #     selected_filename = st.selectbox('Select a file', filenames)
