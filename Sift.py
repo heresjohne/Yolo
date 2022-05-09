@@ -160,7 +160,7 @@ def file_selector(opt,folder_path='./images/'):
             audio2=df_album_uris 
             components.iframe(album_uri_link , width=600, height=200 )
         except:
-            st.image([‘../img/none.jpeg’])
+            print('ww')
 
         
 #     selected_filename = st.selectbox('Select a file', filenames)
