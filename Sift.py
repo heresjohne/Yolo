@@ -11,7 +11,7 @@ import streamlit as st
 
 def sift(opt):
 
-    for filename in glob.glob('https://raw.githubusercontent.com/heresjohne/yolov5/tree/main/images/*.jpg'):
+    for filename in glob.glob('*.jpg'):
         st.button('Wow')
 
         img1 = cv2.imread(filename)  
