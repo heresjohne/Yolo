@@ -10,6 +10,8 @@ import streamlit as st
 
 
 def sift(opt):
+    st.button('Wow')
+
     for filename in glob.glob('./images/*.jpeg'):
 
         img1 = cv2.imread(filename)  
@@ -55,7 +57,6 @@ def sift(opt):
              st.button('None')
 
         counter += 1
-     st.button('Wow')
 
 
 
