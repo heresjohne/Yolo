@@ -144,7 +144,7 @@ def file_selector(opt,folder_path='./images/'):
         
         if found == 0 and vari == counter:
             st.header('Oops, we do not have that album')
-        if found == 1:
+        if 1 == 1:
             #track_results = sp.search(q='album:'+ str(filename3), type='album', limit=1)
 #             result = sp.search(filename3,type ="album")
             result = sp.search(filename3,type ="album",limit = 1)
