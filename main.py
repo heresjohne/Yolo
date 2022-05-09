@@ -44,7 +44,7 @@ if __name__ == '__main__':
         st.write("")
 
     with col3:
-        st.image("QR.png")
+        st.image("QR.PNG")
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
                         default='weights/best.pt', help='model.pt path(s)')
