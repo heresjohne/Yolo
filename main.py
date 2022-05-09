@@ -10,16 +10,7 @@ from PIL import Image
 #%%
 from Sift import file_selector 
 
-col1, col2, col3 = st.beta_columns([1,6,1])
 
-with col1:
-st.write("")
-
-with col2:
-st.image("QR.png")
-
-with col3:
-st.write("")
 
 def get_subdirs(b='.'):
     '''
@@ -44,7 +35,16 @@ if __name__ == '__main__':
 
     st.title('Album Processing Algorithm')
     st.text('Upload a photo of the album you want to scan!')
+    col1, col2, col3 = st.beta_columns([1,6,1])
 
+    with col1:
+        st.write("")
+
+    with col2:
+        st.write("")
+
+    with col3:
+        st.image("QR.png")
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
                         default='weights/best.pt', help='model.pt path(s)')
