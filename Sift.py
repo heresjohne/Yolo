@@ -145,22 +145,22 @@ def file_selector(opt,folder_path='./images/'):
         
         if found == 0 and vari == counter:
             st.header('Oops, we do not have that album')
-        
-        track_results = sp.search(q='album:'+ filename3, type='album', limit=1)
-        result = sp.search(i,type ="albu")
-        album_uris = result['album']['items'][0]['uri']
-        df_album_uris = pd.DataFrame(album_uris,columns=['album_uri'])
-        df_album_uris.head()
-        new = df._album_uris["album_uri"].str.split(":",n = 2,expand = True)
-        df_album_uris["album_uri_new"]= new[2]
-        df_album_uris.head()
-                                                         
-#         if type(url) == str:
-        try:
-            audio2=df_album_uris 
-            components.iframe(album_uri_link , width=600, height=200 )
-        except:
-            print('ww')
+        if found == 1 and vari == counter:
+            track_results = sp.search(q='album:'+ filename3, type='album', limit=1)
+            result = sp.search(i,type ="albu")
+            album_uris = result['album']['items'][0]['uri']
+            df_album_uris = pd.DataFrame(album_uris,columns=['album_uri'])
+            df_album_uris.head()
+            new = df._album_uris["album_uri"].str.split(":",n = 2,expand = True)
+            df_album_uris["album_uri_new"]= new[2]
+            df_album_uris.head()
+
+    #         if type(url) == str:
+            try:
+                audio2=df_album_uris 
+                components.iframe(album_uri_link , width=600, height=200 )
+            except:
+                print('ww')
 
         
 #     selected_filename = st.selectbox('Select a file', filenames)
