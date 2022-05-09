@@ -149,7 +149,7 @@ def file_selector(opt,folder_path='./images/'):
         track_results = sp.search(q='album:'+ filename3, type='album', limit=1)
         result = sp.search(i,type ="albu")
         album_uris = result['album']['items'][0]['uri']
-        df_album_uris = pd.DataFrame(album_uris,columns=[;album_uri'])
+        df_album_uris = pd.DataFrame(album_uris,columns=['album_uri'])
         df_album_uris.head()
         new = df._album_uris["album_uri"].str.split(":",n = 2,expand = True)
         df_album_uris["album_uri_new"]= new[2]
