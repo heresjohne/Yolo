@@ -111,10 +111,10 @@ def file_selector(opt,folder_path='./images/'):
             filename3 = str(filename2).rstrip('.jpeg')
             filename3 = str(filename2).rstrip('.jpg')
             print('Album name is:',filename_list[counter])
-            st.button(f'Album name is: {filename3}')
+            st.header(f'Album name is: {filename3}')
         else: 
             print('aaa')
-            st.button('Oops, we do not have that album')
+            st.header('Oops, we do not have that album')
             
 #              st.button('None')
 
