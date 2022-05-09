@@ -87,7 +87,7 @@ def file_selector(opt,folder_path='./images/'):
         filename_list.append(str(filename))
 
         
-            counter = 0
+    counter = 0
     for filename in filenames:
 
         #img2 = cv2.imread('test.jpeg')  
