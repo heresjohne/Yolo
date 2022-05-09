@@ -64,6 +64,9 @@ import os
 
 def file_selector(folder_path='./images/'):
     filenames = os.listdir(folder_path)
+    for filename in filenames:
+
+        st.button('filename')
     selected_filename = st.selectbox('Select a file', filenames)
     return os.path.join(folder_path, selected_filename)
 
