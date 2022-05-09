@@ -78,9 +78,8 @@ sift_list = []
 keyp_list = []
 filename_list = []
 found = 0
-
-cid = '16f1343fb87b4e5b9eea7dcff1123613'
-secret = '330ce74bb10e426b841045d8d9ad491b'
+cid = '73f3ce006c4d406197e700230991abea'
+secret = '7272246311f149818dab149eab062074'
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager
 =
@@ -146,19 +145,20 @@ def file_selector(opt,folder_path='./images/'):
         if found == 0 and vari == counter:
             st.header('Oops, we do not have that album')
         if found == 1 and vari == counter:
-            track_results = sp.search(q='album:'+ filename3, type='album', limit=1)
-            result = sp.search(i,type ="album")
-            st.header(f'Album name is: {track_results}')
-            album_uris = result['album']['items'][0]['uri']
-            df_album_uris = pd.DataFrame(album_uris,columns=['album_uri'])
-            df_album_uris.head()
-            new = df._album_uris["album_uri"].str.split(":",n = 2,expand = True)
-            df_album_uris["album_uri_new"]= new[2]
-            df_album_uris.head()
+            #track_results = sp.search(q='album:'+ str(filename3), type='album', limit=1)
+#             result = sp.search(filename3,type ="album")
+            result = sp.search(filename3,type ="album",limit = 1)
+            #print(result)
+
+            #st.header(f'Album name is: {track_results}')
+            album_uris = result['albums']['items'][0]['uri']
+            print(album_uris)
+            album_uris = album_uris.lstrip('spotify:album:')
+            album_uri_link = "https://open.spotify/com/embed/album" + album_uris
 
     #         if type(url) == str:
             try:
-                audio2=df_album_uris 
+                audio2=album_uri_link 
                 components.iframe(album_uri_link , width=600, height=200 )
             except:
                 print('ww')
