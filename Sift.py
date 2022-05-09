@@ -21,32 +21,32 @@ def sift(opt):
         keyp_list.append(keypoints_1)
 
     counter = 0
-    #for filename1 in glob.glob('./images/*.jpeg'):
-    
-    #img2 = cv2.imread('test.jpeg')  
-    img2 = opt
-    filename1 = filename1.lstrip('../yolov5/images/')
+    for filename1 in glob.glob('./images/*.jpeg'):
 
-    filename1 = str(filename1).rstrip('.jpeg')
-    filename1 = str(filename1).rstrip('.jpg')
-    filename1 = filename1[1:]
+        #img2 = cv2.imread('test.jpeg')  
+        img2 = opt
+        filename1 = filename1.lstrip('../yolov5/images/')
 
-    img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+        filename1 = str(filename1).rstrip('.jpeg')
+        filename1 = str(filename1).rstrip('.jpg')
+        filename1 = filename1[1:]
 
-    sift = cv2.xfeatures2d.SIFT_create()
+        img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 
-    keypoints_2, descriptors_2 = sift.detectAndCompute(img2,None)
-#feature matching
-    bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=True)
+        sift = cv2.xfeatures2d.SIFT_create()
 
-    matches = bf.match(sift_list[counter],descriptors_2)
-    matches = sorted(matches, key = lambda x:x.distance)
-    if len(matches) > 700:
-        print(len(matches))
-        img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
-        plt.imshow(img3),plt.show()
+        keypoints_2, descriptors_2 = sift.detectAndCompute(img2,None)
+        #feature matching
+        bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=True)
 
-        print('Album name is:',filename1)
-    counter += 1
+        matches = bf.match(sift_list[counter],descriptors_2)
+        matches = sorted(matches, key = lambda x:x.distance)
+        if len(matches) > 700:
+            print(len(matches))
+            img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
+            plt.imshow(img3),plt.show()
+
+            print('Album name is:',filename1)
+        counter += 1
 
 
