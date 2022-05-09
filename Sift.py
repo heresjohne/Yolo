@@ -10,9 +10,9 @@ import streamlit as st
 
 
 def sift(opt):
-    st.button('Wow')
 
     for filename in glob.glob('./images/*.jpeg'):
+    st.button('Wow')
 
         img1 = cv2.imread(filename)  
         image_list.append(img1)
