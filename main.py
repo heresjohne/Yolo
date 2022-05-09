@@ -104,7 +104,7 @@ if __name__ == '__main__':
         if st.button('Start Album Processing'):
 
             detect(opt)
-            file_selector(uploaded_file)
+            file_selector(opt.source)
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
