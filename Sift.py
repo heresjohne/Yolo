@@ -24,7 +24,7 @@ def sift(opt):
     #for filename1 in glob.glob('./images/*.jpeg'):
     
     #img2 = cv2.imread('test.jpeg')  
-    img2 = optr
+    img2 = opt
     filename1 = filename1.lstrip('../yolov5/images/')
 
     filename1 = str(filename1).rstrip('.jpeg')
