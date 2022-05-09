@@ -9,6 +9,7 @@ import argparse
 from PIL import Image
 #%%
 from Sift import file_selector 
+import decades
 
 
 
@@ -117,6 +118,7 @@ if __name__ == '__main__':
 
             detect(opt)
             file_selector(opt.source)
+            decades()
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
