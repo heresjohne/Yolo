@@ -103,7 +103,7 @@ def file_selector(opt,folder_path='./images/'):
 
         matches = bf.match(sift_list[counter],descriptors_2)
         matches = sorted(matches, key = lambda x:x.distance)
-        if len(matches) > 400:
+        if len(matches) > 600:
             print(len(matches))
             img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
             #plt.imshow(img3),plt.show()
