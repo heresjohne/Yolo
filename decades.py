@@ -36,6 +36,7 @@ num_classes=len(eval_dataset.classes)
 dsize=len(eval_dataset)
 # Class label names
 print(eval_dataset.classes)
+st.header(f'{eval_dataset.classes}')
 exit()
 class_names=['2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995']
 
