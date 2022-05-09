@@ -80,8 +80,8 @@ def file_selector(folder_path='./images/'):
 
         sift = cv2.SIFT_create()
 
-        keypoints_1, descriptors_1 = sift.detect(img1,None)
-        sift_list.append(descriptors_1)
+        keypoints_1= sift.detect(img1,None)
+        #sift_list.append(descriptors_1)
         keyp_list.append(keypoints_1)
 #     selected_filename = st.selectbox('Select a file', filenames)
 #     return os.path.join(folder_path, selected_filename)
