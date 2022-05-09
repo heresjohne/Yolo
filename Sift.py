@@ -74,6 +74,7 @@ def file_selector(opt,folder_path='./images/'):
     filenames = os.listdir(folder_path)
     for filename in filenames:
 
+        img2 = cv2.imread(opt)  
 
         img1 = cv2.imread('./images/'+filename)  
         image_list.append(img1)
