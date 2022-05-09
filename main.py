@@ -32,6 +32,7 @@ def get_detection_folder():
 if __name__ == '__main__':
 
     st.title('Album Processing Algorithm')
+    st.text('Upload a photo of the album you want to scan')
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
