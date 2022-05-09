@@ -69,7 +69,7 @@ image_list = []
 sift_list = []
 keyp_list = []
 filename_list = []
-
+found = 0
 def file_selector(opt,folder_path='./images/'):
     filenames = os.listdir(folder_path)
     for filename in filenames:
@@ -111,18 +111,22 @@ def file_selector(opt,folder_path='./images/'):
             filename3 = str(filename2).rstrip('.jpeg')
             filename3 = str(filename2).rstrip('.jpg')
             print('Album name is:',filename_list[counter])
-            st.header(f'Album name is: {filename3}')
+            found = 1
+            #st.header(f'Album name is: {filename3}')
         else: 
             print('aaa')
-            st.header('Oops, we do not have that album')
+            return
             
 #              st.button('None')
 
         counter += 1
         
         
-        
-        
+        if found == 1:
+            st.header(f'Album name is: {filename3}')
+
+        else:
+            st.header('Oops, we do not have that album')
         
         
 #     selected_filename = st.selectbox('Select a file', filenames)
