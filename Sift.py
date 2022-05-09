@@ -77,6 +77,8 @@ image_list = []
 sift_list = []
 keyp_list = []
 filename_list = []
+cid = '73f3ce006c4d406197e700230991abea'
+
 secret = '7272246311f149818dab149eab062074'
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager
