@@ -8,7 +8,7 @@ import multiprocessing
 import streamlit as st
 #Loading the testing images
 #Loading the saved model
-EVAL_MODEL= './model/model.pth'
+EVAL_MODEL= './models/model.pth'
 model = torch.load(EVAL_MODEL,map_location ='cpu')
 
 model.eval()
