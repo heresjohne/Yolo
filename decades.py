@@ -4,7 +4,7 @@ import torchvision
 from torchvision import datasets, models, transforms
 import torch.utils.data as data
 import multiprocessing
-from sklearn.metrics import confusion_matrix
+#from sklearn.metrics import confusion_matrix
 import streamlit as st
 #Loading the testing images
 #Loading the saved model
@@ -77,7 +77,7 @@ overall_accuracy=100 * correct / total
 print('Accuracy of the network on the {:d} test images: {:.2f}%'.format(dsize, 
     overall_accuracy))
 # Confusion matrix
-conf_mat=confusion_matrix(lbllist.numpy(), predlist.numpy())
+#conf_mat=confusion_matrix(lbllist.numpy(), predlist.numpy())
 print('Confusion Matrix')
 print('-'*16)
 print(conf_mat,'\n')
