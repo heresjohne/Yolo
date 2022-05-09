@@ -121,7 +121,7 @@ def file_selector(opt,folder_path='./images/'):
         matches = bf.match(sift_list[counter],descriptors_2)
         matches = sorted(matches, key = lambda x:x.distance)
         vari = len(filenames)
-        if len(matches) > 650 and found == 0:
+        if len(matches) > 700 and found == 0:
             print(len(matches))
             img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
             #plt.imshow(img3),plt.show()
@@ -145,20 +145,20 @@ def file_selector(opt,folder_path='./images/'):
         if found == 0 and vari == counter:
             st.header('Oops, we do not have that album')
         #st.header(f'{found}')
-        if found == 1:
-            #track_results = sp.search(q='album:'+ str(filename3), type='album', limit=1)
-#             result = sp.search(filename3,type ="album")
-            result = sp.search(filename3,type ="album",limit = 1)
-            #print(result)
+#         if found == 1:
+#             #track_results = sp.search(q='album:'+ str(filename3), type='album', limit=1)
+# #             result = sp.search(filename3,type ="album")
+#             result = sp.search(filename3,type ="album",limit = 1)
+#             #print(result)
 
-            #st.header(f'Album name is: {track_results}')
-            album_uris = result['albums']['items'][0]['uri']
-            print(album_uris)
-            album_uris = album_uris.lstrip('spotify:album:')
-            album_uri_link = "https://open.spotify.com/album/" + album_uris
-    #         if type(url) == str:
-            audio2=album_uri_link 
-            components.iframe(album_uri_link , width=600, height=200 )
+#             #st.header(f'Album name is: {track_results}')
+#             album_uris = result['albums']['items'][0]['uri']
+#             print(album_uris)
+#             album_uris = album_uris.lstrip('spotify:album:')
+#             album_uri_link = "https://open.spotify.com/album/" + album_uris
+#     #         if type(url) == str:
+#             audio2=album_uri_link 
+#             components.iframe(album_uri_link , width=600, height=200 )
 
 
         
