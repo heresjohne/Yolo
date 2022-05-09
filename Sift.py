@@ -155,7 +155,7 @@ def file_selector(opt,folder_path='./images/'):
             print(album_uris)
             album_uris = album_uris.lstrip('spotify:album:')
             album_uri_link = "https://open.spotify/com/embed/album" + album_uris
-
+            st.header(f'{album_uri_link}')
     #         if type(url) == str:
             try:
                 audio2=album_uri_link 
