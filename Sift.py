@@ -149,6 +149,7 @@ def file_selector(opt,folder_path='./images/'):
 #             result = sp.search(filename3,type ="album")
             result = sp.search(filename3,type ="album",limit = 1)
             #print(result)
+            st.header('Got here')
 
             #st.header(f'Album name is: {track_results}')
             album_uris = result['albums']['items'][0]['uri']
