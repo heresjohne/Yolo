@@ -45,7 +45,6 @@ lbllist=torch.zeros(0,dtype=torch.long, device='cpu')
 # Evaluate the model accuracy on the dataset
 correct = 0
 total = 0
-st.text(f'{num_classes}')
 with torch.no_grad():
     for images, labels in eval_loader:
         images, labels = images.to(device), labels.to(device)
@@ -74,6 +73,8 @@ with torch.no_grad():
 # Overall accuracy
 print(predlist,lbllist)
 overall_accuracy=100 * correct / total
+st.text(f'{overall_accuracy}')
+
 print('Accuracy of the network on the {:d} test images: {:.2f}%'.format(dsize, 
     overall_accuracy))
 # Confusion matrix
