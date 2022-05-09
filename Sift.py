@@ -69,7 +69,7 @@ image_list = []
 sift_list = []
 keyp_list = []
 
-def file_selector(folder_path='heresjohne/yolov5/tree/main/images/'):
+def file_selector(folder_path='https://github.com/heresjohne/yolov5/tree/main/images/'):
     filenames = os.listdir(folder_path)
     for filename in filenames:
 
