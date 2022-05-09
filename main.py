@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     st.title('Album Processing Algorithm')
     st.text('Upload a photo of the album you want to scan!')
-    col1, col2, col3 = st.beta_columns([1,6,1])
+    col1, col2, col3 = st.columns([1,6,1])
 
     with col1:
         st.write("")
