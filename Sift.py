@@ -74,7 +74,6 @@ def file_selector(opt,folder_path='./images/'):
     filenames = os.listdir(folder_path)
     for filename in filenames:
 
-        img2 = cv2.imread(opt)  
 
         img1 = cv2.imread('./images/'+filename)  
         image_list.append(img1)
@@ -82,8 +81,8 @@ def file_selector(opt,folder_path='./images/'):
 
         sift = cv2.SIFT_create()
 
-        keypoints_1= sift.detect(img1,None)
-        #sift_list.append(descriptors_1)
+        keypoints_1,descriptors_1= sift.detectAndCompute(img1,None)
+        sift_list.append(descriptors_1)
         keyp_list.append(keypoints_1)
         filename_list.append(str(filename))
 
@@ -98,24 +97,24 @@ def file_selector(opt,folder_path='./images/'):
 
         sift = cv2.SIFT_create()
 
-        keypoints_2 = sift.detectAndCompute(img2,None)
+        keypoints_2,descriptors_2 = sift.detectAndCompute(img2,None)
         #feature matching
         bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=True)
 
-#         matches = bf.match(sift_list[counter],descriptors_2)
-#         matches = sorted(matches, key = lambda x:x.distance)
-#         if len(matches) > 700:
-#             print(len(matches))
-#             img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
-#             plt.imshow(img3),plt.show()
+        matches = bf.match(sift_list[counter],descriptors_2)
+        matches = sorted(matches, key = lambda x:x.distance)
+        if len(matches) > 700:
+            print(len(matches))
+            img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
+            plt.imshow(img3),plt.show()
 
-#             print('Album name is:',filename1)
-#             st.button('Yes')
-#         else: 
-#              #st.button(f'{get_detection_folder()}')
-#              st.button('None')
+            print('Album name is:',filename1)
+            st.button('Yes')
+        else: 
+             #st.button(f'{get_detection_folder()}')
+             st.button('None')
 
-#         counter += 1
+        counter += 1
         
         
         
