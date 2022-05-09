@@ -144,7 +144,7 @@ def file_selector(opt,folder_path='./images/'):
         
         if found == 0 and vari == counter:
             st.header('Oops, we do not have that album')
-        st.header(f'{found}')
+        #st.header(f'{found}')
         if found == 1:
             #track_results = sp.search(q='album:'+ str(filename3), type='album', limit=1)
 #             result = sp.search(filename3,type ="album")
@@ -157,11 +157,9 @@ def file_selector(opt,folder_path='./images/'):
             album_uris = album_uris.lstrip('spotify:album:')
             album_uri_link = "https://open.spotify/com/embed/album" + album_uris
     #         if type(url) == str:
-            try:
-                audio2=album_uri_link 
-                components.iframe(album_uri_link , width=600, height=200 )
-            except:
-                print('ww')
+            audio2=album_uri_link 
+            components.iframe(album_uri_link , width=600, height=200 )
+
 
         
 #     selected_filename = st.selectbox('Select a file', filenames)
