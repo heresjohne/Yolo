@@ -90,8 +90,8 @@ def file_selector(opt,folder_path='./images/'):
     counter = 0
     for filename in filenames:
 
-        #img2 = cv2.imread('test.jpeg')  
-        img2 = opt
+        img2 = cv2.imread(opt)  
+        #img2 = opt
         
         img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 
