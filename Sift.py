@@ -69,12 +69,12 @@ image_list = []
 sift_list = []
 keyp_list = []
 
-def file_selector(folder_path='./images/'):
+def file_selector(folder_path='./images/*.jpg'):
     filenames = os.listdir(folder_path)
     for filename in filenames:
 
 
-        img1 = cv2.imread(filename)  
+        img1 = cv2.imread(folder_path + filename)  
         image_list.append(img1)
         img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
 
