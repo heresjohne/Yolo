@@ -68,8 +68,9 @@ import matplotlib.pyplot as plt
 image_list = []
 sift_list = []
 keyp_list = []
+filename_list = []
 
-def file_selector(folder_path='./images/'):
+def file_selector(opt,folder_path='./images/'):
     filenames = os.listdir(folder_path)
     for filename in filenames:
 
@@ -83,6 +84,43 @@ def file_selector(folder_path='./images/'):
         keypoints_1= sift.detect(img1,None)
         #sift_list.append(descriptors_1)
         keyp_list.append(keypoints_1)
+        filename_list.append(str(filename))
+
+        
+            counter = 0
+    for filename in filenames:
+
+        #img2 = cv2.imread('test.jpeg')  
+        img2 = opt
+        
+        img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+
+        sift = cv2.SIFT_create()
+
+        keypoints_2 = sift.detectAndCompute(img2,None)
+        #feature matching
+        bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=True)
+
+#         matches = bf.match(sift_list[counter],descriptors_2)
+#         matches = sorted(matches, key = lambda x:x.distance)
+#         if len(matches) > 700:
+#             print(len(matches))
+#             img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
+#             plt.imshow(img3),plt.show()
+
+#             print('Album name is:',filename1)
+#             st.button('Yes')
+#         else: 
+#              #st.button(f'{get_detection_folder()}')
+#              st.button('None')
+
+#         counter += 1
+        
+        
+        
+        
+        
+        
 #     selected_filename = st.selectbox('Select a file', filenames)
 #     return os.path.join(folder_path, selected_filename)
 
