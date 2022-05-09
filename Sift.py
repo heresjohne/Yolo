@@ -121,7 +121,7 @@ def file_selector(opt,folder_path='./images/'):
         matches = bf.match(sift_list[counter],descriptors_2)
         matches = sorted(matches, key = lambda x:x.distance)
         vari = len(filenames)
-        if len(matches) > 650:
+        if len(matches) > 650 and found == 0:
             print(len(matches))
             img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
             #plt.imshow(img3),plt.show()
@@ -150,14 +150,12 @@ def file_selector(opt,folder_path='./images/'):
 #             result = sp.search(filename3,type ="album")
             result = sp.search(filename3,type ="album",limit = 1)
             #print(result)
-            st.header('Got here')
 
             #st.header(f'Album name is: {track_results}')
             album_uris = result['albums']['items'][0]['uri']
             print(album_uris)
             album_uris = album_uris.lstrip('spotify:album:')
             album_uri_link = "https://open.spotify/com/embed/album" + album_uris
-            st.header(f'{album_uri_link}')
     #         if type(url) == str:
             try:
                 audio2=album_uri_link 
