@@ -107,12 +107,14 @@ def file_selector(opt,folder_path='./images/'):
             print(len(matches))
             img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
             #plt.imshow(img3),plt.show()
-
+            filename2 = filename_list[counter]
+            filename3 = str(filename2).rstrip('.jpeg')
+            filename3 = str(filename2).rstrip('.jpg')
             print('Album name is:',filename_list[counter])
-            st.button(f'Album name is: {filename_list[counter]}')
+            st.button(f'Album name is: {filename3}')
         else: 
             print('aaa')
-#              #st.button(f'{get_detection_folder()}')
+            st.button('Oops, we do not have that album')
             
 #              st.button('None')
 
