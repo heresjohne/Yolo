@@ -6,22 +6,25 @@ import glob
 image_list = []
 sift_list = []
 keyp_list = []
-for filename in glob.glob('../yolov5/images/*.jpeg'):
+
+def sift(opt):
+    for filename in glob.glob('./images/*.jpeg'):
+
+        img1 = cv2.imread(filename)  
+        image_list.append(img1)
+        img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+
+        sift = cv2.xfeatures2d.SIFT_create()
+
+        keypoints_1, descriptors_1 = sift.detectAndCompute(img1,None)
+        sift_list.append(descriptors_1)
+        keyp_list.append(keypoints_1)
+
+    counter = 0
+    #for filename1 in glob.glob('./images/*.jpeg'):
     
-    img1 = cv2.imread(filename)  
-    image_list.append(img1)
-    img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-
-    sift = cv2.xfeatures2d.SIFT_create()
-
-    keypoints_1, descriptors_1 = sift.detectAndCompute(img1,None)
-    sift_list.append(descriptors_1)
-    keyp_list.append(keypoints_1)
-
-counter = 0
-for filename1 in glob.glob('../yolov5/images/*.jpeg'):
-    img2 = cv2.imread('test.jpeg')  
-
+    #img2 = cv2.imread('test.jpeg')  
+    img2 = optr
     filename1 = filename1.lstrip('../yolov5/images/')
 
     filename1 = str(filename1).rstrip('.jpeg')
