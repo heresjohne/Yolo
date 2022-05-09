@@ -147,7 +147,8 @@ def file_selector(opt,folder_path='./images/'):
             st.header('Oops, we do not have that album')
         if found == 1 and vari == counter:
             track_results = sp.search(q='album:'+ filename3, type='album', limit=1)
-            result = sp.search(i,type ="albu")
+            result = sp.search(i,type ="album")
+            st.header(f'Album name is: {result}')
             album_uris = result['album']['items'][0]['uri']
             df_album_uris = pd.DataFrame(album_uris,columns=['album_uri'])
             df_album_uris.head()
