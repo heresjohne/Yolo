@@ -155,7 +155,7 @@ def file_selector(opt,folder_path='./images/'):
             album_uris = result['albums']['items'][0]['uri']
             print(album_uris)
             album_uris = album_uris.lstrip('spotify:album:')
-            album_uri_link = "https://open.spotify/com/embed/album" + album_uris
+            album_uri_link = "https://open.spotify.com/album/" + album_uris
     #         if type(url) == str:
             audio2=album_uri_link 
             components.iframe(album_uri_link , width=600, height=200 )
