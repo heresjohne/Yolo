@@ -78,6 +78,6 @@ print('Accuracy of the network on the {:d} test images: {:.2f}%'.format(dsize,
     overall_accuracy))
 # Confusion matrix
 #conf_mat=confusion_matrix(lbllist.numpy(), predlist.numpy())
-print('Confusion Matrix')
-print('-'*16)
-print(conf_mat,'\n')
+#print('Confusion Matrix')
+#print('-'*16)
+#print(conf_mat,'\n')
