@@ -6,6 +6,8 @@ import glob
 image_list = []
 sift_list = []
 keyp_list = []
+import streamlit as st
+
 
 def sift(opt):
     for filename in glob.glob('./images/*.jpeg'):
@@ -47,6 +49,11 @@ def sift(opt):
             plt.imshow(img3),plt.show()
 
             print('Album name is:',filename1)
+            st.button('Yes')
+        else: 
+             #st.button(f'{get_detection_folder()}')
+             st.button('None')
+
         counter += 1
 
 
