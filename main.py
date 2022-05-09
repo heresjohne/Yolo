@@ -8,7 +8,7 @@ import sys
 import argparse
 from PIL import Image
 #%%
-from Sift import sift 
+from Sift import file_selector 
 
 def get_subdirs(b='.'):
     '''
@@ -104,7 +104,7 @@ if __name__ == '__main__':
         if st.button('Start Album Processing'):
 
             detect(opt)
-            sift(opt)
+            file_selector()
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
