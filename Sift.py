@@ -61,13 +61,28 @@
 
 import streamlit as st
 import os
+import cv2 
+import matplotlib.pyplot as plt
+#%matplotlib inline
+# read images
+image_list = []
+sift_list = []
+keyp_list = []
 
 def file_selector(folder_path='./images/'):
     filenames = os.listdir(folder_path)
     for filename in filenames:
 
-        st.button(f'{filename}')
-        break
+
+        img1 = cv2.imread(filename)  
+        image_list.append(img1)
+        img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+
+        sift = cv2.xfeatures2d.SIFT_create()
+
+        keypoints_1, descriptors_1 = sift.detectAndCompute(img1,None)
+        sift_list.append(descriptors_1)
+        keyp_list.append(keypoints_1)
     selected_filename = st.selectbox('Select a file', filenames)
     return os.path.join(folder_path, selected_filename)
 
