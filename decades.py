@@ -73,7 +73,7 @@ with torch.no_grad():
 # Overall accuracy
 print(predlist,lbllist)
 overall_accuracy=100 * correct / total
-st.text(f'{overall_accuracy}')
+st.header(f'{overall_accuracy}')
 
 print('Accuracy of the network on the {:d} test images: {:.2f}%'.format(dsize, 
     overall_accuracy))
