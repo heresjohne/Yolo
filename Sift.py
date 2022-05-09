@@ -103,16 +103,18 @@ def file_selector(opt,folder_path='./images/'):
 
         matches = bf.match(sift_list[counter],descriptors_2)
         matches = sorted(matches, key = lambda x:x.distance)
-        if len(matches) > 700:
+        if len(matches) > 400:
             print(len(matches))
             img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
-            plt.imshow(img3),plt.show()
+            #plt.imshow(img3),plt.show()
 
-            print('Album name is:',filename1)
-            st.button('Yes')
+            print('Album name is:',filename_list[counter])
+            st.button(f'Album name is: {filename_list[counter]}')
         else: 
-             #st.button(f'{get_detection_folder()}')
-             st.button('None')
+            print('aaa')
+#              #st.button(f'{get_detection_folder()}')
+            
+#              st.button('None')
 
         counter += 1
         
