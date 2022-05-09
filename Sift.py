@@ -131,7 +131,7 @@ def file_selector(opt,folder_path='./images/'):
             print('Album name is:',filename_list[counter])
             found = 1
             st.header(f'Album name is: {filename3}')
-            break
+            
         else: 
             
             print('aaa')
