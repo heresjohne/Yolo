@@ -125,12 +125,14 @@ def file_selector(opt,folder_path='./images/'):
             print(len(matches))
             img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
             #plt.imshow(img3),plt.show()
+            st.image(img3)
             filename2 = filename_list[counter]
             filename3 = str(filename2).rstrip('.jpeg')
             filename3 = str(filename2).rstrip('.jpg')
             print('Album name is:',filename_list[counter])
             found = 1
             st.header(f'Album name is: {filename3}')
+            break
             
         else: 
             
