@@ -65,7 +65,7 @@ from time import sleep
 import time
 import pandas as pd
 import numpy as np
-
+import streamlit.components.v1 as components
 
 import streamlit as st
 import os
