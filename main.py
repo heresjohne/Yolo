@@ -10,6 +10,17 @@ from PIL import Image
 #%%
 from Sift import file_selector 
 
+col1, col2, col3 = st.beta_columns([1,6,1])
+
+with col1:
+st.write("")
+
+with col2:
+st.image("QR.png")
+
+with col3:
+st.write("")
+
 def get_subdirs(b='.'):
     '''
         Returns all sub-directories in a specific Path
