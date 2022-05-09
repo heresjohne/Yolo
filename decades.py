@@ -36,8 +36,8 @@ num_classes=len(eval_dataset.classes)
 dsize=len(eval_dataset)
 # Class label names
 print(eval_dataset.classes)
-st.header(f'{eval_dataset.classes}')
-exit()
+#st.header(f'{eval_dataset.classes}')
+
 class_names=['2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995']
 
 #class_names=['2000s', '2010s', '90s', '2020s', '70s', '80s']
@@ -75,7 +75,7 @@ with torch.no_grad():
 # Overall accuracy
 print(predlist,lbllist)
 overall_accuracy=100 * correct / total
-#st.header(f'{overall_accuracy}')
+st.header(f'{overall_accuracy}')
 
 print('Accuracy of the network on the {:d} test images: {:.2f}%'.format(dsize, 
     overall_accuracy))
