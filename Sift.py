@@ -77,8 +77,6 @@ image_list = []
 sift_list = []
 keyp_list = []
 filename_list = []
-found = 0
-cid = '73f3ce006c4d406197e700230991abea'
 secret = '7272246311f149818dab149eab062074'
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager
@@ -103,7 +101,7 @@ def file_selector(opt,folder_path='./images/'):
         keyp_list.append(keypoints_1)
         filename_list.append(str(filename))
 
-        
+    found = 0 
     counter = 0
     for filename in filenames:
 
@@ -135,7 +133,7 @@ def file_selector(opt,folder_path='./images/'):
         else: 
             
             print('aaa')
-            found = 0
+            #found = 0
             
 #              st.button('None')
 
