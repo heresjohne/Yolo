@@ -74,7 +74,7 @@ def file_selector(folder_path='./images/'):
     for filename in filenames:
 
 
-        img1 = cv2.imread('/yolov5/tree/main/images/'+filename)  
+        img1 = cv2.imread('./images/'+filename)  
         image_list.append(img1)
         img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
 
