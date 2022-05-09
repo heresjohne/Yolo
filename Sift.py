@@ -122,7 +122,7 @@ def file_selector(opt,folder_path='./images/'):
         matches = bf.match(sift_list[counter],descriptors_2)
         matches = sorted(matches, key = lambda x:x.distance)
         vari = len(filenames)
-        if len(matches) > 600:
+        if len(matches) > 650:
             print(len(matches))
             img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
             #plt.imshow(img3),plt.show()
@@ -148,7 +148,7 @@ def file_selector(opt,folder_path='./images/'):
         if found == 1 and vari == counter:
             track_results = sp.search(q='album:'+ filename3, type='album', limit=1)
             result = sp.search(i,type ="album")
-            st.header(f'Album name is: {result}')
+            st.header(f'Album name is: {track_results}')
             album_uris = result['album']['items'][0]['uri']
             df_album_uris = pd.DataFrame(album_uris,columns=['album_uri'])
             df_album_uris.head()
