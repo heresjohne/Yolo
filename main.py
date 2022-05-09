@@ -115,10 +115,11 @@ if __name__ == '__main__':
     if is_valid:
         print('valid')
         if st.button('Start Album Processing'):
-            decades
+            
 
             detect(opt)
             file_selector(opt.source)
+            decades(opt.source)
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
