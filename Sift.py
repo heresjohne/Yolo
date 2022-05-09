@@ -58,6 +58,14 @@
 
 #         counter += 1
 
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+from tqdm import tqdm
+from time import sleep
+import time
+import pandas as pd
+import numpy as np
+
 
 import streamlit as st
 import os
@@ -70,6 +78,16 @@ sift_list = []
 keyp_list = []
 filename_list = []
 found = 0
+
+cid = '16f1343fb87b4e5b9eea7dcff1123613'
+secret = '330ce74bb10e426b841045d8d9ad491b'
+client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
+sp = spotipy.Spotify(client_credentials_manager
+=
+client_credentials_manager)
+
+
+
 def file_selector(opt,folder_path='./images/'):
     filenames = os.listdir(folder_path)
     for filename in filenames:
@@ -127,6 +145,22 @@ def file_selector(opt,folder_path='./images/'):
         
         if found == 0 and vari == counter:
             st.header('Oops, we do not have that album')
+        
+        track_results = sp.search(q='album:'+ filename3, type='album', limit=1)
+        result = sp.search(i,type ="albu")
+        album_uris = result['album']['items'][0]['uri']
+        df_album_uris = pd.DataFrame(album_uris,columns=[;album_uri'])
+        df_album_uris.head()
+        new = df._album_uris["album_uri"].str.split(":",n = 2,expand = True)
+        df_album_uris["album_uri_new"]= new[2]
+        df_album_uris.head()
+                                                         
+#         if type(url) == str:
+        try:
+            audio2=df_album_uris 
+            components.iframe(album_uri_link , width=600, height=200 )
+        except:
+            st.image([‘../img/none.jpeg’])
 
         
 #     selected_filename = st.selectbox('Select a file', filenames)
