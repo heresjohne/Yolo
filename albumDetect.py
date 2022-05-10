@@ -334,7 +334,7 @@ def main(inta,pict):
     noFiles = len(next(os.walk("Pics/grp_"+d))[2])
 
     img1 = cv2.imread(pict)
-    #img1 = cv2.resize(img1,(800, 600))
+    img1 = cv2.resize(img1,(800, 600))
     if inta ==1 or inta ==4:
         view = "side"
     else:
