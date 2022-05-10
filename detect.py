@@ -93,6 +93,7 @@ def detect(opt, implant, save_img=False):
                 ), dataset.count
             else:
                 p, s, im0, frame = path, '', im0s, getattr(dataset, 'frame', 0)
+            st.text(im0)
             im0 = implant
             p = Path(p)  # to Path
             save_path = str(save_dir / p.name)  # img.jpg
