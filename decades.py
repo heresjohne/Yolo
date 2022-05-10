@@ -15,6 +15,7 @@ def decades(opt):
 
         model.eval()
 
+        option = st.selectbox('Which decade is this album from?',('2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995'))
 
 
 
@@ -40,9 +41,8 @@ def decades(opt):
         # Class label names
         print(eval_dataset.classes)
         #st.header(f'{eval_dataset.classes}')
-        option = st.selectbox('Which decade is this album from?',('2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995'))
 
-        class_names=['2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995']
+        class_names=['1995-2000','1975-1985','1985-1995','2000-2005','2005-2015','2015-2025']
 #         if option == 0:
                 
 #         if option == 1:
