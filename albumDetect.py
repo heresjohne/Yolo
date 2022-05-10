@@ -335,7 +335,7 @@ def main(inta,pict):
 
     img1 = pict
     #img1 = cv2.resize(img1,(800, 600))
-    if i ==1 or i==4:
+    if inta ==1 or inta ==4:
         view = "side"
     else:
         view = "front"
