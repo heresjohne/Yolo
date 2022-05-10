@@ -66,20 +66,15 @@ def detect(opt, implant, save_img=False):
             next(model.parameters())))  # run once
     t0 = time.time()
     for path, img, im0s, vid_cap in dataset:
-        st.text('Once')
-        st.text(img)
-        st.text('Twice')
-        st.text(implant)
-        img = implant
+       
         img = torch.from_numpy(img).to(device)
-        st.text(img)
+        
 
        # img = implant
         img = img.half() if half else img.float()  # uint8 to fp16/32
         img /= 255.0  # 0 - 255 to 0.0 - 1.0
         if img.ndimension() == 3:
             img = img.unsqueeze(0)
-        st.text(img)
         # Inference
         t1 = time_synchronized()
         pred = model(img, augment=opt.augment)[0]
