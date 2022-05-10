@@ -136,7 +136,10 @@ def detect(opt, implant, save_img=False):
                 b = 1
             else: 
                 b = peop
-
+            if n:
+                b = max(b,n)
+            else:
+                b = max(b,1)
             #LOGGER.info(f'{s} Estimated Band Members: {b}')
             st.button(f'{s}')
             st.button(f'Estimated Band Members: {b}')
