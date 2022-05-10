@@ -133,7 +133,7 @@ def detect(opt, implant, save_img=False):
                                      color=colors[int(cls)], line_thickness=3)
             if 'persons' not in str(s):
                 #st.text(f'{s})
-                b = n
+                b = 1
             else: 
                 b = peop
 
