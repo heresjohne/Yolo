@@ -281,43 +281,6 @@ def realign(image, secImg, pts, view="",treshold=0,loop=False,H=np.zeros((0,0)))
     
     return wrp, thresh, H
 
-def imageSimilarity(image1, image2, treshold):
-    """Find similarity of images"""
-
-    orb = cv2.ORB_create(nfeatures=500)
-   
-    k2, des2 = orb.detectAndCompute(image2, None)
-    k1, des1 = orb.detectAndCompute(image1, None)
-
-    # Check if images are similar
-    numKeyPts = 0
-    if len(k1) <= len(k2):
-        numKeyPts = len(k1)
-    else:
-        numKeyPts = len(k2)
-
-    i_p = dict(algorithm=6, table_number=6,
-    key_size=12, multi_probe_level=2)
-
-    s_p = {}
-
-    f = cv2.FlannBasedMatcher(i_p, s_p)
-    match = f.knnMatch(des1, des2, k=2)
-
-    hPoints = []
-    
-    try:      
-        for i,j in match:
-            if i.distance < treshold * j.distance:
-                hPoints.append(i)
-                match = np.asarray(hPoints)
-
-        similarity = float(len(match) / numKeyPts) * 100
-    except:
-        similarity = 0
-
-    return similarity
-
 def findMatchPts(img,fImg,key,thresh, method=""):
     """Detect if matching points were found during feature matching step"""
     condition = False
@@ -326,18 +289,34 @@ def findMatchPts(img,fImg,key,thresh, method=""):
         # Check to see if rectangular album frame can be detected
         check, flag= contourEdge(img,method)
         
-        # Perform similarity check if only edges have been detected
-        if flag:
-            similarity = imageSimilarity(fImg, check,thresh)
-        
-            if similarity < key:
-                condition = False
-            else:
-                condition = True
-        else:
-            condition = False
+
     
-    return condition    
+    return flag
+
+def imageSimilarity_SIFT(image1, image2):
+    """Find image similarity based on match points"""
+    """Reference: analyticsvidhya.com/blog/2019/10/detailed-guide-powerful-sift-technique-image-matching-python"""
+
+    sift = cv2.xfeaures2d.SIFT_create()
+
+    keypoint_1, descriptors_1 = sift.detectAndCompute(image1,None)
+    keypoint_2, descriptors_2 = sift.detectAndCompute(image2,None)
+
+    #feature matching
+    bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=True)
+
+    matches = bf.match(descriptors_1, descriptors_2)
+    matches = sorted(matches, key = lambda x:x.distance)
+
+    similarity1 = float(len(matches) / keypoint_1) * 100
+    similarity2 = float(len(matches) / keypoint_2) * 100
+
+    if len(matches) != 0:
+        similarity = float(similarity1+similarity2)/2 
+    else:
+        similarity = 0
+
+    return similarity
 
 def main():
     """Detect Album Cover Images"""
@@ -349,6 +328,7 @@ def main():
         img = cv2.resize(img,(800, 600))
         
         fImg, pts, imMono= processIm(img)
+        #fImg = cv2.Con(g)
 
         noFiles = len(next(os.walk("Pics/grp_"+d))[2])
     
