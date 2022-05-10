@@ -173,7 +173,7 @@ def file_selector(opt,folder_path='./images/'):
         counter += 1
     success = max(real_list)
     indx_success = real_list.index(success)
-    st.header(f'Album is{names[indx_success]}')
+    st.header(f'Album is {names[indx_success]}')
 
 
        # plt.imshow(img3,),plt.show()
