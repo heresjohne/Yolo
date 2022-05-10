@@ -12,7 +12,7 @@ import argparse
 from PIL import Image
 #%%
 from Sift import file_selector 
-import decades
+from decades import decades
 import albumDetect
 
 
