@@ -125,7 +125,7 @@ if __name__ == '__main__':
             elif source_index == 3:
                 img2 = albumDetect.main(4,opt.source)
             
-            
+            opt.source = img2
             detect(img2)
             #file_selector(opt.source)
             #decades(opt.source)
