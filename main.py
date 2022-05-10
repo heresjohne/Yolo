@@ -128,7 +128,11 @@ if __name__ == '__main__':
                 img2 =  albumDetect.main(3,opt.source)
             elif source_index == 3:
                 img2 = albumDetect.main(4,opt.source)
-            
+            elif source_index == 4:
+                img2 = albumDetect.main(5,opt.source)
+            elif source_index == 5:
+                img2 = albumDetect.main(6,opt.source)
+                        
             #opt.source = img2
             #detect(opt,img2)   #Uncomment this
             deleted = cv2.imwrite('todelete.jpg',img2)
