@@ -345,7 +345,7 @@ def main(inta,pict):
     img2, thresh, H_old = realign(fImg,fImg1,pts2,view)
     key = 35
     condition= findMatchPts(img2,fImg,key,thresh)
-    tag = str(i)+str(j)
+    tag = str(inta)
 
     # Check that matching points were found
     if not condition:
