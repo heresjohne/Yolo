@@ -3,7 +3,7 @@ from pathlib import Path
 import streamlit as st
 import time
 from detect import detect
-
+import cv2
 #import detect
 
 import os
