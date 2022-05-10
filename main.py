@@ -119,7 +119,6 @@ if __name__ == '__main__':
         print('valid')
         if st.button('Start Album Processing'):
             
-            option = st.selectbox('Which decade is this album from?',('2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995'))
 
             if source_index == 0:
                 img2 =  albumDetect.main(1,opt.source)
@@ -137,7 +136,7 @@ if __name__ == '__main__':
             
             deleted_2 = cv2.imwrite('./test/00/todelete.jpg',img2)
             file_selector('todelete.jpg')
-            decades('./test/',option)
+            decades('./test/')
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
