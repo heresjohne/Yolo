@@ -40,9 +40,18 @@ def decades(opt):
         # Class label names
         print(eval_dataset.classes)
         #st.header(f'{eval_dataset.classes}')
+        option = st.selectbox('Which decade is this album from?',('2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995'))
 
         class_names=['2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995']
-
+        if option == 0:
+                
+        if option == 1:
+        if option == 2:
+        if option == 3:
+        if option == 4:
+        if option == 5:
+                
+                
         #class_names=['2000s', '2010s', '90s', '2020s', '70s', '80s']
         # Initialize the prediction and label lists
         predlist=torch.zeros(0,dtype=torch.long, device='cpu')
@@ -61,12 +70,7 @@ def decades(opt):
                   pred = pred.lstrip('tensor()')
                   pred = int(pred.rstrip(')'))
                   pred = class_names[pred]
-
-                  lbl = str(labels[count])
-                  lbl = lbl.lstrip('tensor()')
-                  lbl = int(lbl.rstrip(')'))
-
-                  lbl = class_names[lbl]
+                  lbl = class_names[option]
 
                   print('Predicted Decade is:', pred)
                   print('Actual Decade is',lbl)
@@ -78,7 +82,7 @@ def decades(opt):
         # Overall accuracy
         print(predlist,lbllist)
         overall_accuracy=100 * correct / total
-        st.header(f'{overall_accuracy}')
+        st.subheader(f'I think this album is from the following decade:{pred}. It actually is: {lbl}')
 
         print('Accuracy of the network on the {:d} test images: {:.2f}%'.format(dsize, 
             overall_accuracy))
