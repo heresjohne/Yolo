@@ -84,7 +84,6 @@ def decades(opt):
         print(predlist,lbllist)
         overall_accuracy=100 * correct / total
         option = st.selectbox('Which decade is this album from?',('1995-2000','1975-1985','1985-1995','2000-2005','2005-2015','2015-2025'))
-        time.sleep(20)
         st.subheader(f'I think this album is from the following decade:{pred}. It actually is: {lbl}')
 
         print('Accuracy of the network on the {:d} test images: {:.2f}%'.format(dsize, 
