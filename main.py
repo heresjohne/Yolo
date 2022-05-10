@@ -133,9 +133,9 @@ if __name__ == '__main__':
             deleted = cv2.imwrite('todelete.jpg',img2)
             detect(opt,'todelete.jpg')
             
-            deleted_2 = cv2.imwrite('./test/todelete.jpg',img2)
+            deleted_2 = cv2.imwrite('./test/00/todelete.jpg',img2)
             #file_selector('todelete.jpg')
-            decades('./test/todelete.jpg')
+            decades('./test/')
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
