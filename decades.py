@@ -43,13 +43,13 @@ def decades(opt):
         option = st.selectbox('Which decade is this album from?',('2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995'))
 
         class_names=['2000-2005','2005-2015','1995-2000','2015-2025','1975-1985','1985-1995']
-        if option == 0:
+#         if option == 0:
                 
-        if option == 1:
-        if option == 2:
-        if option == 3:
-        if option == 4:
-        if option == 5:
+#         if option == 1:
+#         if option == 2:
+#         if option == 3:
+#         if option == 4:
+#         if option == 5:
                 
                 
         #class_names=['2000s', '2010s', '90s', '2020s', '70s', '80s']
