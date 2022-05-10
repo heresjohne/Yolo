@@ -96,7 +96,7 @@ def detect(opt, blah, save_img=False):
             else:
                 p, s, im0, frame = path, '', im0s, getattr(dataset, 'frame', 0)
             #st.text(im0)
-            im0 = implant
+            #im0 = implant
             p = Path(p)  # to Path
             save_path = str(save_dir / p.name)  # img.jpg
             txt_path = str(save_dir / 'labels' / p.stem) + \
