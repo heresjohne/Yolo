@@ -87,7 +87,7 @@ if __name__ == '__main__':
     opt = parser.parse_args()
     print(opt)
 
-    source = ("Set 1", "Set 2", "Set 3", "Set 4")
+    source = ("Set 1", "Set 2", "Set 3", "Set 4","Set 5","Set 6")
     source_index = st.sidebar.selectbox("Mode", range(
         len(source)), format_func=lambda x: source[x])
 
