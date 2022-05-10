@@ -163,7 +163,7 @@ def file_selector(opt,folder_path='./images/'):
                     found = 1
                     img3 = cv2.drawMatchesKnn(image_list[counter], keyp_list[counter], img2, keypoints_2,matches,None,**draw_params)
                     st.image(img3)
-                    st.header(f'Album is{name}')
+                    #st.header(f'Album is{name}')
                     break 
                 if comp == 1:
                     break
