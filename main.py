@@ -84,7 +84,7 @@ if __name__ == '__main__':
     opt = parser.parse_args()
     print(opt)
 
-    source = ("Image Detection", "Video Detection")
+    source = ("Set 1", "Set 2", "Set 3", "Set 4")
     source_index = st.sidebar.selectbox("Mode", range(
         len(source)), format_func=lambda x: source[x])
 
