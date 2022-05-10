@@ -85,7 +85,8 @@ sp = spotipy.Spotify(client_credentials_manager
 =
 client_credentials_manager)
 
-
+def header(url):
+     st.markdown(f'<p style="background-color:#0066cc;color:#33ff33;font-size:24px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
 
 def file_selector(opt,folder_path='./images/'):
     filenames = os.listdir(folder_path)
@@ -166,14 +167,17 @@ def file_selector(opt,folder_path='./images/'):
                     break 
                 if comp == 1:
                     break
-        temp_list = temp_list[-1]
+        if temp_list:
+            temp_list = temp_list[-1]
+        else:
+            temp_list = 0
         real_list.append(temp_list)
 
 
         counter += 1
     success = max(real_list)
     indx_success = real_list.index(success)
-    st.header(f'Album is {names[indx_success]}')
+    st.header(f'Album is: {names[indx_success]}')
 
 
        # plt.imshow(img3,),plt.show()
