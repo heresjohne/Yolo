@@ -10,7 +10,7 @@ from PIL import Image
 #%%
 from Sift import file_selector 
 import decades
-
+import albumDetect
 
 
 def get_subdirs(b='.'):
@@ -116,8 +116,16 @@ if __name__ == '__main__':
         print('valid')
         if st.button('Start Album Processing'):
             
-
-            detect(opt)
+            if source_index == 0:
+                albumDetect.main(1,opt.source)
+            elif source_index == 1:
+                albumDetect.main(2,opt.source)
+            elif source_index == 2:
+                albumDetect.main(3,opt.source)
+            elif source_index == 3:
+                albumDetect.main(4,opt.source)
+                
+            #detect(opt)
             #file_selector(opt.source)
             #decades(opt.source)
             if source_index == 0:
