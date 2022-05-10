@@ -228,7 +228,7 @@ if __name__ == '__main__':
     with torch.no_grad():
         if opt.update:  # update all models (to fix SourceChangeWarning)
             for opt.weights in ['yolov5s.pt', 'yolov5m.pt', 'yolov5l.pt', 'yolov5x.pt']:
-                detect()
+                detect(**vars(opt))
                 strip_optimizer(opt.weights)
         else:
-            detect()
+            detect(**vars(opt))
