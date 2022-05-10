@@ -138,6 +138,7 @@ def detect(opt, implant, save_img=False):
                 b = peop
 
             #LOGGER.info(f'{s} Estimated Band Members: {b}')
+            st.button(f'{s}')
             st.button(f'Estimated Band Members: {b}')
             
             # Print time (inference + NMS)
