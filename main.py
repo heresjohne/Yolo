@@ -91,7 +91,7 @@ if __name__ == '__main__':
     source_index = st.sidebar.selectbox("Mode", range(
         len(source)), format_func=lambda x: source[x])
 
-    if source_index == 0 or source_index == 1 or source_index == 2 or source_index == 3:
+    if source_index == 0 or source_index == 1 or source_index == 2 or source_index == 3 or source_index == 4 or source_index == 5:
         uploaded_file = st.sidebar.file_uploader(
             "Upload Image", type=['png', 'jpeg', 'jpg'])
         if uploaded_file is not None:
