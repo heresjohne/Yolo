@@ -130,10 +130,10 @@ if __name__ == '__main__':
             
             #opt.source = img2
             #detect(opt,img2)   #Uncomment this
-            cv2.imwrite('todelete.jpg',img2)
+            deleted = cv2.imwrite('todelete.jpg',img2)
             detect(opt,'todelete.jpg')
             
-            #file_selector(opt.source)
+            file_selector(deleted)
             #decades(opt.source)
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
