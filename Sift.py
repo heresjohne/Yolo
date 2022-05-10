@@ -105,6 +105,7 @@ def file_selector(opt,folder_path='./images/'):
 
     found = 0 
     counter = 0
+    comp = 0
     for filename in filenames:
 
         img2 = cv2.imread(opt)  
