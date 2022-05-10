@@ -105,6 +105,8 @@ def file_selector(opt,folder_path='./images/'):
 
     found = 0 
     counter = 0
+    real_list = []
+
     comp = 0
     for filename in filenames:
 
@@ -140,12 +142,19 @@ def file_selector(opt,folder_path='./images/'):
                            flags = 0)
         #print(len(matchesMask),filename1)
         good = []
+        temp_list = []
+        filename = filename.rstrip('.jpg')
+
+        names.append(filename)
+
         for m,n in matches:
             if m.distance < 0.75*n.distance and comp == 0:
                 good.append([m])
                 a=len(good)
                 percent=(a*100)/len(keypoints_2)
                 print("{} % similarity".format(percent))
+                temp_list.append(percent)
+
                 if percent >= 22.00:
                     filename = filename.rstrip('.jpg')
                     name = filename
@@ -155,17 +164,21 @@ def file_selector(opt,folder_path='./images/'):
                     st.image(img3)
                     st.header(f'Album is{name}')
                     break 
-
-                if comp == 1:
+                    if comp == 1:
                     break
+        temp_list = temp_list[-1]
+        real_list.append(temp_list)
+
 
         counter += 1
-        
+    success = max(real_list)
+    indx_success = real_list.index(success)
+    st.header(f'Album is{names[indx_success]}')
+
 
        # plt.imshow(img3,),plt.show()
 
-        if found == 0 and len(filenames) == counter:
-            st.header('Oops, we do not have that album')
+
         #st.header(f'{found}')
 #         if found == 1:
 #             #track_results = sp.search(q='album:'+ str(filename3), type='album', limit=1)
