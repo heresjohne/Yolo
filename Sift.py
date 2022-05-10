@@ -146,11 +146,14 @@ def file_selector(opt,folder_path='./images/'):
                 a=len(good)
                 percent=(a*100)/len(keypoints_2)
                 print("{} % similarity".format(percent))
-                if percent >= 20.00:
+                if percent >= 22.00:
                     filename = filename.rstrip('.jpg')
                     name = filename
                     comp = 1
                     found = 1
+                    img3 = cv2.drawMatchesKnn(image_list[counter], keyp_list[counter], img2, keypoints_2,matches,None,**draw_params)
+                    st.image(img3)
+                    st.header(f'Album is{name}')
                     break 
 
                 if comp == 1:
@@ -158,10 +161,7 @@ def file_selector(opt,folder_path='./images/'):
 
         counter += 1
         
-        if found == 1 and comp == 1:
-            img3 = cv2.drawMatchesKnn(image_list[counter], keyp_list[counter], img2, keypoints_2,matches,None,**draw_params)
-            st.image(img3)
-            st.header(f'Album is{name}')
+
        # plt.imshow(img3,),plt.show()
 
         if found == 0 and len(filenames) == counter:
