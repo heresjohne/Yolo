@@ -393,6 +393,7 @@ def main(inta,pict):
     st.image(img2)
     print("*******Pictures Saved**********")
     print("*******End of Code**********")
+    return img2
             
 
 if __name__ == '__main__':
