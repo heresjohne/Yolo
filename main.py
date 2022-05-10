@@ -117,15 +117,16 @@ if __name__ == '__main__':
         if st.button('Start Album Processing'):
             
             if source_index == 0:
-                albumDetect.main(1,opt.source)
+                img2 =  albumDetect.main(1,opt.source)
             elif source_index == 1:
-                albumDetect.main(2,opt.source)
+                img2 =  albumDetect.main(2,opt.source)
             elif source_index == 2:
-                albumDetect.main(3,opt.source)
+                img2 =  albumDetect.main(3,opt.source)
             elif source_index == 3:
-                albumDetect.main(4,opt.source)
-                
-            #detect(opt)
+                img2 = albumDetect.main(4,opt.source)
+            
+            
+            detect(img2)
             #file_selector(opt.source)
             #decades(opt.source)
             if source_index == 0:
