@@ -6,6 +6,7 @@ import torch.utils.data as data
 import multiprocessing
 #from sklearn.metrics import confusion_matrix
 import streamlit as st
+import time
 #Loading the testing images
 #Loading the saved model
 
@@ -57,7 +58,6 @@ def decades(opt):
         # Evaluate the model accuracy on the dataset
         correct = 0
         total = 0
-        option = st.selectbox('Which decade is this album from?',('1995-2000','1975-1985','1985-1995','2000-2005','2005-2015','2015-2025'))
 
         with torch.no_grad():
             for images, labels in eval_loader:
@@ -71,10 +71,10 @@ def decades(opt):
                   pred = int(pred.rstrip(')'))
                   pred = class_names[pred]
                   #option = int(option)
-                  lbl = option
+                  #lbl = option
 
                   print('Predicted Decade is:', pred)
-                  print('Actual Decade is',lbl)
+                  #print('Actual Decade is',lbl)
                   count +=1 
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()
@@ -83,6 +83,8 @@ def decades(opt):
         # Overall accuracy
         print(predlist,lbllist)
         overall_accuracy=100 * correct / total
+        option = st.selectbox('Which decade is this album from?',('1995-2000','1975-1985','1985-1995','2000-2005','2005-2015','2015-2025'))
+        time.sleep(20)
         st.subheader(f'I think this album is from the following decade:{pred}. It actually is: {lbl}')
 
         print('Accuracy of the network on the {:d} test images: {:.2f}%'.format(dsize, 
