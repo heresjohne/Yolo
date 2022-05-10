@@ -128,7 +128,7 @@ def detect(opt, save_img=False):
                         plot_one_box(xyxy, im0, label=label,
                                      color=colors[int(cls)], line_thickness=3)
             if 'person' not in str(s):
-                st.text(f'{s})
+                #st.text(f'{s})
                 b = s
             else: 
                 b = s
