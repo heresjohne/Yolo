@@ -89,10 +89,10 @@ def detect(opt, implant, save_img=False):
         # Process detections
         for i, det in enumerate(pred):  # detections per image
             if webcam:  # batch_size >= 1
-                p, s, _, frame = path[i], '%g: ' % i, im0s[i].copy(
+                p, s, im0, frame = path[i], '%g: ' % i, im0s[i].copy(
                 ), dataset.count
             else:
-                p, s, _, frame = path, '', im0s, getattr(dataset, 'frame', 0)
+                p, s, im0, frame = path, '', im0s, getattr(dataset, 'frame', 0)
             #im0 = implant
             p = Path(p)  # to Path
             save_path = str(save_dir / p.name)  # img.jpg
