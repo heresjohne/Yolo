@@ -133,7 +133,7 @@ if __name__ == '__main__':
             deleted = cv2.imwrite('todelete.jpg',img2)
             detect(opt,'todelete.jpg')
             
-            file_selector(deleted)
+            file_selector('todelete.jpg')
             #decades(opt.source)
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
