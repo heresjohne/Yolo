@@ -163,7 +163,7 @@ def file_selector(opt,folder_path='./images/'):
             st.header(f'Album is{name}')
        # plt.imshow(img3,),plt.show()
 
-        if found == 0 and vari == counter:
+        if found == 0 and len(filenames) == counter:
             st.header('Oops, we do not have that album')
         #st.header(f'{found}')
 #         if found == 1:
