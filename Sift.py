@@ -164,7 +164,7 @@ def file_selector(opt,folder_path='./images/'):
                     st.image(img3)
                     st.header(f'Album is{name}')
                     break 
-                    if comp == 1:
+                if comp == 1:
                     break
         temp_list = temp_list[-1]
         real_list.append(temp_list)
