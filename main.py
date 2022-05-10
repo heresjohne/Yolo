@@ -3,6 +3,9 @@ from pathlib import Path
 import streamlit as st
 import time
 from detect import detect
+
+#import detect
+
 import os
 import sys
 import argparse
@@ -126,7 +129,10 @@ if __name__ == '__main__':
                 img2 = albumDetect.main(4,opt.source)
             
             #opt.source = img2
-            detect(opt,img2)
+            #detect(opt,img2)   #Uncomment this
+            cv2.imWrite('todelete.jpg',img2)
+            detect(source = 'todelete.jpg')
+            
             #file_selector(opt.source)
             #decades(opt.source)
             if source_index == 0:
