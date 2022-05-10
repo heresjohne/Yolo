@@ -118,7 +118,7 @@ if __name__ == '__main__':
             
 
             detect(opt)
-            file_selector(opt.source)
+            #file_selector(opt.source)
             #decades(opt.source)
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
