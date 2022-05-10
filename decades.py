@@ -20,7 +20,7 @@ def decades(opt):
 
         bs = 8
         EVAL_DIR='./test/'
-
+        EVAL_DIR = opt
 
         # Prepare the eval data loader
         eval_transform=transforms.Compose([
@@ -31,7 +31,7 @@ def decades(opt):
                                      [0.229, 0.224, 0.225])])
         eval_dataset=datasets.ImageFolder(root=EVAL_DIR, transform=eval_transform)
         eval_loader=data.DataLoader(eval_dataset, batch_size=bs, shuffle=True, pin_memory=True)
-        eval_loader = opt
+        #eval_loader = opt
         # Enable gpu mode, if cuda available
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         # Number of classes and dataset-size
