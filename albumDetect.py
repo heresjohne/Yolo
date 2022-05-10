@@ -15,6 +15,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
+import streamlit as st
 
 def maskBW(image):
     """Masking Image"""
@@ -318,80 +319,79 @@ def imageSimilarity_SIFT(image1, image2):
 
     return similarity
 
-def main():
+def main(inta,pict):
     """Detect Album Cover Images"""
 
     # Save the six distinct vertical orientation imges
-    for i in range(1,7):
-        d = str(i)
-        img = cv2.imread("Pics/grp_"+d+"/IMG_0%d.JPG"%i)
-        img = cv2.resize(img,(800, 600))
-        
-        fImg, pts, imMono= processIm(img)
-        #fImg = cv2.Con(g)
 
-        noFiles = len(next(os.walk("Pics/grp_"+d))[2])
-    
-        for j in range(2,noFiles+1):
-            img1 = cv2.imread("Pics/grp_"+d+"/IMG_%d.jpg"%j)
-            img1 = cv2.resize(img1,(800, 600))
-            if i ==1 or i==4:
-                view = "side"
-            else:
-                view = "front"
-            
-            fImg1, pts2, imMono2= processIm(img1)
-            
-            img2, thresh, H_old = realign(fImg,fImg1,pts2,view)
-            key = 35
-            condition= findMatchPts(img2,fImg,key,thresh)
-            tag = str(i)+str(j)
+    d = str(inta)
+    img = cv2.imread("Pics/grp_"+d+"/IMG_0%d.JPG"%inta)
+    img = cv2.resize(img,(800, 600))
 
-            # Check that matching points were found
-            if not condition:
-                # If warped image is gibbrish, loop for different threshold values
-                # until correct warp is obtained
+    fImg, pts, imMono= processIm(img)
+    #fImg = cv2.Con(g)
 
-                # Creating a list of thresholds to reiterate through
-                tre = []
-                t = 0.7
-                for i in range(1,31):
-                    t +=0.01 
-                    tre.append(t)
-                
-                indx = 0
-                while (not condition) and (indx < len(tre)):
-                    img2, thresh, H_new = realign(fImg,fImg1, pts2,treshold=tre[indx],loop=True,H=H_old)
-                    indx += 1
-                    key = 20
-                    print(thresh)
-                    
-                    # Check if points were found and similarity met
-                    condition = findMatchPts(img2,fImg,key,thresh,method="Contour")
-                    
-                    # Check if there are HoughLines to verify if image is correctly warped
-                    
-                    if condition:
-                        sharpen_kernel = np.array([[-1,-1,-1],[-1,9,-1],[-1,-1,-1]])
-                        img2 = cv2.filter2D(img2,-1,sharpen_kernel)
-                        condition = findMatchPts(img2,fImg,key,thresh,method="Hough")
-                    H_old = H_new                                                   
-            else:
-                imgGray = np.hstack((img1,img2))
-                
-                # Uncomment to see plots
-                #cv2.imshow('warp', check)
-                #cv2.imshow('Gray-Compare', imgGray)
-                # cv2.waitKey(0)
-                # cv2.destroyAllWindows()
-                # cv2.imwrite("picRect%d.jpg" %j,imgGray)
-                
-                cv2.imwrite("Pics/Adjusted_Pic/adjPic_Easy"+tag+".jpg",imgGray)
-            
-            # Save adjusted picture in a folder to pass on to face detection step
-            cv2.imwrite("Pics/Adjusted_Pic/adjPic_"+tag+".jpg",img2)
-            
-            print("*******Pictures Saved**********")
+    noFiles = len(next(os.walk("Pics/grp_"+d))[2])
+
+    img1 = pict
+    #img1 = cv2.resize(img1,(800, 600))
+    if i ==1 or i==4:
+        view = "side"
+    else:
+        view = "front"
+
+    fImg1, pts2, imMono2= processIm(img1)
+
+    img2, thresh, H_old = realign(fImg,fImg1,pts2,view)
+    key = 35
+    condition= findMatchPts(img2,fImg,key,thresh)
+    tag = str(i)+str(j)
+
+    # Check that matching points were found
+    if not condition:
+        # If warped image is gibbrish, loop for different threshold values
+        # until correct warp is obtained
+
+        # Creating a list of thresholds to reiterate through
+        tre = []
+        t = 0.7
+        for i in range(1,31):
+            t +=0.01 
+            tre.append(t)
+
+        indx = 0
+        while (not condition) and (indx < len(tre)):
+            img2, thresh, H_new = realign(fImg,fImg1, pts2,treshold=tre[indx],loop=True,H=H_old)
+            indx += 1
+            key = 20
+            print(thresh)
+
+            # Check if points were found and similarity met
+            condition = findMatchPts(img2,fImg,key,thresh,method="Contour")
+
+            # Check if there are HoughLines to verify if image is correctly warped
+
+            if condition:
+                sharpen_kernel = np.array([[-1,-1,-1],[-1,9,-1],[-1,-1,-1]])
+                img2 = cv2.filter2D(img2,-1,sharpen_kernel)
+                condition = findMatchPts(img2,fImg,key,thresh,method="Hough")
+            H_old = H_new                                                   
+    else:
+        imgGray = np.hstack((img1,img2))
+
+        # Uncomment to see plots
+        #cv2.imshow('warp', check)
+        #cv2.imshow('Gray-Compare', imgGray)
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
+        # cv2.imwrite("picRect%d.jpg" %j,imgGray)
+
+        cv2.imwrite("Pics/Adjusted_Pic/adjPic_Easy"+tag+".jpg",imgGray)
+
+    # Save adjusted picture in a folder to pass on to face detection step
+    #cv2.imwrite("Pics/Adjusted_Pic/adjPic_"+tag+".jpg",img2)
+    st.image(img2)
+    print("*******Pictures Saved**********")
     print("*******End of Code**********")
             
 
