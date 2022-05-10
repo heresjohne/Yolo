@@ -69,6 +69,7 @@ def detect(opt, implant, save_img=False):
         st.text('Once')
         st.text(img)
         st.text('Twice')
+        st.text(implant)
 
         img = torch.from_numpy(img).to(device)
         st.text(img)
