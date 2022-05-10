@@ -146,7 +146,7 @@ def file_selector(opt,folder_path='./images/'):
                 a=len(good)
                 percent=(a*100)/len(keypoints_2)
                 print("{} % similarity".format(percent))
-                if percent >= 24.00:
+                if percent >= 20.00:
                     name = filename1
                     comp = 1
                     found = 1
