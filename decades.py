@@ -70,6 +70,7 @@ def decades(opt):
                   pred = pred.lstrip('tensor()')
                   pred = int(pred.rstrip(')'))
                   pred = class_names[pred]
+                  option = int(option)
                   lbl = class_names[option]
 
                   print('Predicted Decade is:', pred)
