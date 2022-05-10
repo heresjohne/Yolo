@@ -325,7 +325,12 @@ def main(inta,pict):
     # Save the six distinct vertical orientation imges
 
     d = str(inta)
-    img = cv2.imread("Pics/grp_"+d+"/IMG_0%d.JPG"%inta)
+    
+    try:
+        img = cv2.imread("Pics/grp_"+d+"/IMG_0%d.JPG"%inta)
+    else: 
+        img = cv2.imread("Pics/grp_"+d+"/IMG_0%d.jpg"%inta)
+    
     img = cv2.resize(img,(800, 600))
 
     fImg, pts, imMono= processIm(img)
