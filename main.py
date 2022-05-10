@@ -130,7 +130,7 @@ if __name__ == '__main__':
             
             #opt.source = img2
             #detect(opt,img2)   #Uncomment this
-            cv2.imWrite('todelete.jpg',img2)
+            cv2.imwrite('todelete.jpg',img2)
             detect(source = 'todelete.jpg')
             
             #file_selector(opt.source)
