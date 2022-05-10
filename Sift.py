@@ -115,35 +115,53 @@ def file_selector(opt,folder_path='./images/'):
         sift = cv2.SIFT_create()
 
         keypoints_2,descriptors_2 = sift.detectAndCompute(img2,None)
-        #feature matching
-        bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=True)
+        
+            # FLANN parameters
+        FLANN_INDEX_KDTREE = 0
+        index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
+        search_params = dict(checks=50)   # or pass empty dictionary
 
-        matches = bf.match(sift_list[counter],descriptors_2)
-        matches = sorted(matches, key = lambda x:x.distance)
-        vari = len(filenames)
-        if len(matches) > 400 and found == 0:
-            print(len(matches))
-            img3 = cv2.drawMatches(image_list[counter], keyp_list[counter], img2, keypoints_2, matches[:50], img2, flags=2)
-            #plt.imshow(img3),plt.show()
-            st.image(img3)
-            filename2 = filename_list[counter]
-            filename3 = str(filename2).rstrip('.jpeg')
-            filename3 = str(filename2).rstrip('.jpg')
-            print('Album name is:',filename_list[counter])
-            found = 1
-            st.header(f'Album name is: {filename3}')
-            #break
-            
-        else: 
-            
-            print('aaa')
-            #found = 0
-            
-#              st.button('None')
+        flann = cv2.FlannBasedMatcher(index_params,search_params)
+
+        matches = flann.knnMatch(sift_list[counter],descriptors_2  ,k=2)
+
+        # Need to draw only good matches, so create a mask
+        matchesMask = [[0,0] for i in range(len(matches))]
+
+        # ratio test as per Lowe's paper
+        for i,(m,n) in enumerate(matches):
+            if m.distance < 0.7*n.distance:
+                matchesMask[i]=[1,0]
+
+        draw_params = dict(matchColor = (0,255,0),
+                           singlePointColor = (255,0,0),
+                           matchesMask = matchesMask,
+                           flags = 0)
+        #print(len(matchesMask),filename1)
+        good = []
+        for m,n in matches:
+            if m.distance < 0.75*n.distance and comp == 0:
+                good.append([m])
+                a=len(good)
+                percent=(a*100)/len(keypoints_2)
+                print("{} % similarity".format(percent))
+                if percent >= 24.00:
+                    name = filename1
+                    comp = 1
+                    found = 1
+                    break 
+
+                if comp == 1:
+                    break
 
         counter += 1
         
-        
+        if found == 1:
+            img3 = cv2.drawMatchesKnn(image_list[counter], keyp_list[counter], img2, keypoints_2,matches,None,**draw_params)
+            st.image(img3)
+            st.header(f'Album is{name}')
+       # plt.imshow(img3,),plt.show()
+
         if found == 0 and vari == counter:
             st.header('Oops, we do not have that album')
         #st.header(f'{found}')
