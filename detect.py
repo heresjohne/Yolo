@@ -141,8 +141,8 @@ def detect(opt, blah, save_img=False):
                 b = peop
 
             #LOGGER.info(f'{s} Estimated Band Members: {b}')
-            st.button(f'{s}')
-            st.button(f'Estimated Band Members: {b}')
+           # st.button(f'{s}')
+            st.button(f'I think this band has: {b} members')
             
             # Print time (inference + NMS)
             print(f'{s}Done. ({t2 - t1:.3f}s)')
