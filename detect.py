@@ -107,6 +107,8 @@ def detect(opt, save_img=False):
 
                 # Print results
                 for c in det[:, -1].unique():
+                    if c == 0:
+                        peop = n
                     n = (det[:, -1] == c).sum()  # detections per class
                     # add to string
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "
@@ -131,7 +133,7 @@ def detect(opt, save_img=False):
                 #st.text(f'{s})
                 b = n
             else: 
-                b = c
+                b = peop
 
             #LOGGER.info(f'{s} Estimated Band Members: {b}')
             st.button(f'Estimated Band Members: {b}')
